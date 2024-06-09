@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Monaco}
+    p.p2 {margin: 0.0px 0.0px 14.0px 0.0px; text-align: center; font: 33.0px Monaco}
+    p.p3 {margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Monaco; min-height: 19.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Monaco; -webkit-text-stroke: #000000}
+    p.p5 {margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Monaco; -webkit-text-stroke: #000000; min-height: 19.0px}
+    p.p6 {margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Monaco; -webkit-text-stroke: #000000}
+    p.p7 {margin: 0.0px 0.0px 14.0px 0.0px; font: 12.0px Monaco; -webkit-text-stroke: #000000}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Monaco; -webkit-text-stroke: #000000; min-height: 19.0px}
+    span.s1 {font-kerning: none}
+    span.Apple-tab-span {white-space:pre}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></p>
+<p class="p1"><span class="s1">————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></p>
+<p class="p1"><span class="s1">————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></p>
+<p class="p2"><span class="s1">GCP</span></p>
+<p class="p1"><span class="s1">————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></p>
+<p class="p1"><span class="s1">————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></p>
+<p class="p1"><span class="s1">————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">VM: Machine with hardware(machine type) and software(boot disk image: public or custom)</span></p>
+<p class="p1"><span class="s1">e2-medium-2 : &lt;machine family&gt;-&lt;No of vCPUs&gt;</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Instance Template: Template with pre-populated machine config to launch new vm quickly</span></p>
+<p class="p1"><span class="s1">Image: You can create image of running vm boot disk, and create a template with the image and launch new vm using template quickly</span></p>
+<p class="p1"><span class="s1">? Reduce latency for installing softwares…</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Instance Groups:</span></p>
+<p class="p1"><span class="s1">1. MIG: Instance of same/identical type(config) created using a TEMPLATE, instance template is must</span></p>
+<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>Features: auto healing, auto scaling, managed release</span></p>
+<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>Types: Stateful, Stateless</span></p>
+<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>Config: Name, Instance template, Location(single/multiple zones, distrib shape), Auto-Scaling(Mode: on, scale-out, off| Min, Max Instances | Signal(Metrics for scale(LB, cpu etc))), Init Period(check for autoscale), Scale-in-controls(Don’t scale-in more than 10 vms in 10 mins), Instance Lifecyle(Auto-Healing: HC), Port-Mapping</span></p>
+<p class="p1"><span class="s1">2. UMIG: Instances could be of diff type(config)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span>Features: auto healing, scaling, MR Not available<span class="Apple-converted-space"> </span></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Updating MIG:</span></p>
+<p class="p4"><span class="s1">1. Rolling update - Gradual update of instances in an instance group to the new instance template<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span>- Specify new template: (OPTIONAL) Specify a template for canary testing<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span>- Specify how you want the update to be done:<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>When should the update happen?<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>Start the update immediately (Proactive) or when instance group is resized later(Opportunistic)<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>How should the update happen?<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>Maximum surge: How many instances are added at any point in time?<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>Maximum unavailable: How many instances can be offline during the update?<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1">2. Rolling Restart/replace: Gradual restart or replace of all instances in the group<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span>- No change in template BUT replace/restart existing VMs<span class="Apple-converted-space"> </span></span></p>
+<p class="p4"><span class="s1"><span class="Apple-tab-span">	</span>- Configure Maximum surge, Maximum unavailable and What you want to do? (Restart/Replace)</span></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1">Question: diff b/w backend service and backend</span></p>
+<p class="p6"><span class="s1">Resiliency: ability to provide expected behaviour even if some part of the provider fails.</span></p>
+<p class="p6"><span class="s1">Question:<span class="Apple-converted-space"> </span></span></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1">gcloud:</span></p>
+<p class="p6"><span class="s1">gcloud &lt;group&gt; &lt;subgroup&gt; &lt;actions&gt; …</span></p>
+<p class="p6"><span class="s1">Ex-<span class="Apple-converted-space"> </span></span></p>
+<p class="p6"><span class="s1">gcloud compute instances list</span></p>
+<p class="p6"><span class="s1">gcloud compute zones list</span></p>
+<p class="p6"><span class="s1">gcloud compute regions list</span></p>
+<p class="p6"><span class="s1">gcloud compute machine-types list</span></p>
+<p class="p6"><span class="s1">gcloud compute machine-types list --filter=“zone:asia-south1-a”</span></p>
+<p class="p6"><span class="s1">gcloud compute machine-types list --filter=“zone:(asia-south1-a asia-south1-b)”</span></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1">Container Orchestration:</span></p>
+<p class="p6"><span class="s1">Features:</span></p>
+<p class="p6"><span class="s1">1. Auto-Scaling</span></p>
+<p class="p6"><span class="s1">2. Service Discovery</span></p>
+<p class="p6"><span class="s1">3. Load Balancer</span></p>
+<p class="p6"><span class="s1">4. Self Healing</span></p>
+<p class="p6"><span class="s1">5. Zero downtime deployments</span></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1">GCP Compute Managed Services</span></p>
+<p class="p6"><span class="s1">Compute Engine: IAAS, GKE: CAAS, App Engine: PAAS(CAAS, Serverless), Cloud Funtion: FAAS(Serverless), Cloud Run: CAAS(Serverless)</span></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p6"><span class="s1">App Engine:</span></p>
+<p class="p7"><span class="s1">one app per project</span></p>
+<p class="p7"><span class="s1">app:</span></p>
+<p class="p7"><span class="s1"><span class="Apple-converted-space"> </span>service1:</span></p>
+<p class="p7"><span class="s1"><span class="Apple-converted-space">  </span>version1: traffic 0.3</span></p>
+<p class="p7"><span class="s1"><span class="Apple-converted-space">  </span>version2: traffic 0.7</span></p>
+<p class="p7"><span class="s1"><span class="Apple-converted-space"> </span>service2:</span></p>
+<p class="p7"><span class="s1"><span class="Apple-converted-space">  </span>version1: traffic 0.4</span></p>
+<p class="p7"><span class="s1"><span class="Apple-converted-space">  </span>version2: traffic 0.6</span></p>
+<p class="p7"><span class="s1"><span class="Apple-converted-space"> </span>…</span></p>
+<p class="p4">cd default-service</p>
+<p class="p4">gcloud app deploy</p>
+<p class="p4">gcloud app services list</p>
+<p class="p4">gcloud app versions list</p>
+<p class="p4">gcloud app instances list</p>
+<p class="p4">gcloud app deploy --version=v2</p>
+<p class="p4">gcloud app versions list</p>
+<p class="p4">gcloud app browse</p>
+<p class="p4">gcloud app browse --version 20210215t072907</p>
+<p class="p4">gcloud app deploy --version=v3 --no-promote</p>
+<p class="p4">gcloud app browse --version v3</p>
+<p class="p4">gcloud app services set-traffic split=v3=.5,v2=.5</p>
+<p class="p4">gcloud app services set-traffic splits=v3=.5,v2=.5</p>
+<p class="p4">watch curl https://melodic-furnace-304906.uc.r.appspot.com/</p>
+<p class="p4">gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random</p>
+<p class="p8"><span class="Apple-converted-space"> </span></p>
+<p class="p4">cd ../my-first-service/</p>
+<p class="p4">gcloud app deploy</p>
+<p class="p4">gcloud app browse --service=my-first-service</p>
+<p class="p8"><span class="Apple-converted-space"> </span></p>
+<p class="p4">gcloud app services list</p>
+<p class="p4">gcloud app regions list</p>
+<p class="p8"><br></p>
+<p class="p8"><br></p>
+<p class="p5"><span class="s1"></span><br></p>
+<p class="p5"><span class="s1"></span><br></p>
+</body>
+</html>
